@@ -71,17 +71,47 @@
 // }
 
 
-let num1 = 0, num2 = 0, suma = 0;
+// let num1 = 0, num2 = 0, suma = 0;
 
-num1 = 1;
-num2 = 0;
-suma = num1 + num2;
+// num1 = 1;
+// num2 = 0;
+// suma = num1 + num2;
 
 
-if (suma >= 25){
-    console.log('Good')
-}else if(suma >= 10 && suma <= 24){
-    console.log('Medium');
-}else{
-    console.log('Bad');
-}
+// if (suma >= 25){
+//     console.log('Good')
+// }else if(suma >= 10 && suma <= 24){
+//     console.log('Medium');
+// }else{
+//     console.log('Bad');
+// }
+
+//asignacion suma
+// let numero = 5;
+// numero += 5;
+// console.log(numero);
+
+//asignacion multiplicacion
+// let numero = 5;
+// numero *= 5;
+// console.log(numero);
+
+//asignacion division
+// let numero = 5;
+// numero /= 5;
+// console.log(numero);
+
+// //asignacion potencia
+// let numero = 5;
+// numero **= 5;
+// console.log(numero);
+
+//Primero suma
+// let numero = 5;
+// ++numero
+// console.log(numero);
+
+//Suma despues
+// let numero = 5;
+// numero++
+// console.log(numero);
