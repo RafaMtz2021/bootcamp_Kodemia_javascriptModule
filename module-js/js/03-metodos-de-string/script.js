@@ -26,18 +26,28 @@
 
 
 
-// //Pide nombre e indica vocales
-// let nombre = prompt("Escribe tu nombre completo:");
-// let letra;
-// let cuenta = 0;
+////Contar vocales y consonantes
+   let myString = prompt("Escribe tu nombre completo:");
 
-// for (let i = 0; i < nombre.length; i++) {
-//     letra = nombre.charAt(i);
-//     if(letra === 'a' || letra === 'e' || letra === 'i' || letra === 'o' || letra === 'u') {
-//         cuenta = cuenta + 1
-//     }
-//  }
-//  console.log(`Tu nombre tiene ${cuenta} vocales`);
+    vowels = ['a','e','i','o','u','á','é','í','ó','ú'];
+    let counterVowels = 0;
+    let counterConsonants = 0;
+
+    for(let i=0;i<myString.length;i++){
+        let caracter = myString.charAt(i);
+        //console.log(caracter);
+        if (vowels.includes(caracter)) {
+            //console.log(`${caracter} es vocal`);
+            counterVowels ++
+        } else if(caracter === " ") {
+            continue
+        }else{
+            //console.log(`${caracter} es consonante`);
+            counterConsonants ++
+        }
+    }
+    console.log(`Tu nombre tiene ${counterVowels} vocales y ${counterConsonants} consonantes / sin contar espacios`);
+
 
 
 //Reemplazar palabras
@@ -48,14 +58,14 @@
 
 // console.log(`Estudiante aparece ${coincidencias} veces y la leyenda nueva es: ${reemplazar}`);
 
-//Palabra más larga
-let palabra = prompt("Escribe dos palabras:");
-let partir = palabra.split(" ");
-let parte1 = partir[0].length;
-let parte2 = partir[1].length;
+// //Palabra más larga
+// let palabra = prompt("Escribe dos palabras:");
+// let partir = palabra.split(" ");
+// let parte1 = partir[0].length;
+// let parte2 = partir[1].length;
 
-if (parte1 > parte2){
-    console.log(`La palabra más larga es ${partir[0]} porque tiene ${parte1} caracteres`);
-}else{
-    console.log(`La palabra más larga es ${partir[1]} porque tiene ${parte2} caracteres`);
-}
+// if (parte1 > parte2){
+//     console.log(`La palabra más larga es ${partir[0]} porque tiene ${parte1} caracteres`);
+// }else{
+//     console.log(`La palabra más larga es ${partir[1]} porque tiene ${parte2} caracteres`);
+// }
