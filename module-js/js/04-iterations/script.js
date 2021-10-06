@@ -67,7 +67,7 @@ function pair() {
 Ejercicio 3:
 Imprimir en consola la suma total de todos los digitos de una cantidad p.ej. "1234" -> 10
 */
-
+//forma 1
 function sumatoria() {
     let acumulador = 0;
     let cifra = 0;
@@ -77,15 +77,35 @@ function sumatoria() {
 
     for (let i = 0; i < arreglo.length; i++) {
         cifra = arreglo[i];
-        
         acumulador += cifra
-        
     }
-    console.log(acumulador);
-
+    console.log(`La sumatoria de numeros individuales es: ${acumulador}`);
 }
 
 //sumatoria();
+
+/*
+Ejercicio 3:
+Imprimir en consola la suma total de todos los digitos de una cantidad p.ej. "1234" -> 10
+*/
+//Forma 2
+
+function sumatoria2() {
+    let count = 0;
+    let digit = 0;
+    let quantity = prompt('Ingresa una cantidad: ');
+    const baseArray = quantity.split("");
+    
+    for (let i = 0; i < baseArray.length; i++) {
+        digit = Number(baseArray[i])
+        count = count + digit     
+    }
+    console.log(`La suma de los dígitos individuales es ${count}`);
+
+}
+
+//sumatoria2()
+
 
 
 /*
@@ -104,11 +124,14 @@ Imprimir en consola el siguiente patrón
 */
 
 function patron() {
-    let group;
-    for (let i = 0; i < 10; i++) {
-        let asterix = '*';
-        group += asterix
-        console.log(group);
+    let fin = Number(prompt('Capture un numero:'))
+    for(let i = 1; i <= fin; i++) {
+        let salida = '';
+
+        for(let j=1;j<=i;j++){
+            salida += '* ';
+        }
+        console.log(salida);
     }
 }
-patron()
+//patron()
