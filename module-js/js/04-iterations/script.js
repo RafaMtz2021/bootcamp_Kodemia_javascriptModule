@@ -135,3 +135,27 @@ function patron() {
     }
 }
 //patron()
+
+
+// Solicitar al usuario ingresar un numero
+// Crear una funcion que genere un string con caracteres aleatorios, 
+// la longitud del string debe ser igual que el numero que ingreso el usuario
+
+// input : 6
+// output: '?AQX>H'
+
+function randomChracters() {
+    arrayOutput = [];
+    inputNumber = Number(prompt('Escribe un número: '));
+
+    for(let i=0;i<inputNumber;i++){
+        let getRandom = Math.round(Math.random()*(255-1)+1);
+        let equivalent = String.fromCharCode(getRandom);
+        arrayOutput.push(equivalent);
+    }
+
+    console.log(`El resultado es: ${arrayOutput.join(' ')}`);
+
+}
+
+randomChracters();
