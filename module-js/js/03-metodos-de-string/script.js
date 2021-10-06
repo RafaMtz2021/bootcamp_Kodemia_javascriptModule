@@ -27,26 +27,26 @@
 
 
 ////Contar vocales y consonantes
-   let myString = prompt("Escribe tu nombre completo:");
+//    let myString = prompt("Escribe tu nombre completo:");
 
-    vowels = ['a','e','i','o','u','á','é','í','ó','ú'];
-    let counterVowels = 0;
-    let counterConsonants = 0;
+//     vowels = ['a','e','i','o','u','á','é','í','ó','ú'];
+//     let counterVowels = 0;
+//     let counterConsonants = 0;
 
-    for(let i=0;i<myString.length;i++){
-        let caracter = myString.charAt(i);
-        //console.log(caracter);
-        if (vowels.includes(caracter)) {
-            //console.log(`${caracter} es vocal`);
-            counterVowels ++
-        } else if(caracter === " ") {
-            continue
-        }else{
-            //console.log(`${caracter} es consonante`);
-            counterConsonants ++
-        }
-    }
-    console.log(`Tu nombre tiene ${counterVowels} vocales y ${counterConsonants} consonantes / sin contar espacios`);
+//     for(let i=0;i<myString.length;i++){
+//         let caracter = myString.charAt(i);
+//         //console.log(caracter);
+//         if (vowels.includes(caracter)) {
+//             //console.log(`${caracter} es vocal`);
+//             counterVowels ++
+//         } else if(caracter === " ") {
+//             continue
+//         }else{
+//             //console.log(`${caracter} es consonante`);
+//             counterConsonants ++
+//         }
+//     }
+//     console.log(`Tu nombre tiene ${counterVowels} vocales y ${counterConsonants} consonantes / sin contar espacios`);
 
 
 
