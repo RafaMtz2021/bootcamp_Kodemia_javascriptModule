@@ -149,7 +149,7 @@ function randomChracters() {
     inputNumber = Number(prompt('Escribe un número: '));
 
     for(let i=0;i<inputNumber;i++){
-        let getRandom = Math.round(Math.random()*(255-1)+1);
+        let getRandom = Math.round(Math.random()*(255-32)+32);
         let equivalent = String.fromCharCode(getRandom);
         arrayOutput.push(equivalent);
     }
