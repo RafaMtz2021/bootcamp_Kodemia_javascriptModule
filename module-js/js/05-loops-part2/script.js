@@ -88,4 +88,20 @@ function newKoders() {
         return dbKoders;
     }
 }
-console.log(newKoders());
+//console.log(newKoders());
+
+
+function invierteTexto() {
+    arrayI = []
+    
+    input = prompt('Ingresa una palabra:')
+
+    for(let i=0; i<input.length;i++){
+        character = input.charAt(i)
+        arrayI.push(character);   
+    }
+    arrayI.reverse();
+    console.log(arrayI.join(''));
+}
+
+invierteTexto();
