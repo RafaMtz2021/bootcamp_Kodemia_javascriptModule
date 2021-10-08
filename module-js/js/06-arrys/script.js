@@ -78,4 +78,5 @@ function newKoders() {
         return dbKoders;
     }
 }
-console.log(newKoders());
+//console.log(newKoders());
+
