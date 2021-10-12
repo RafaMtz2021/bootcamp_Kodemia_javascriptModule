@@ -371,7 +371,7 @@ const cartShoppings = [
    - obtener el inventario total en valor de los productos tipo chips
    - obtener el inventario total en valor de los productos tipo drink
 */
-
+//=========================================================================================
 //- obtener los productos de tipo chips en un arreglo
 //- obtener los productos de tipo drink en un arreglo
 const productType = (product) => {
@@ -384,9 +384,9 @@ const productType = (product) => {
     });return products;
 }
 
-console.log(('drinks:' , productType('drink')));
+//console.log(('drinks:' , productType('drink')));
 //console.log(('chips:' , productType('chip')));
-
+//=====================================================================================
 //- obtener todos los productos < a $50
 //- obtener >= $50
 const productPrice = (operator) => {
@@ -402,7 +402,7 @@ const productPrice = (operator) => {
     });return;
 }
 //productPrice('<')
-
+//===========================================================================================
 //- obtener el inventario total en valor de todos los productos
 //- obtener el inventario total en valor de los productos tipo chips
 //- obtener el inventario total en valor de los productos tipo drink
@@ -410,12 +410,12 @@ const productPrice = (operator) => {
 const productSum = (indicator) => {
     let counter = 0;
     cartShoppings.forEach((cartShoppingProduct) =>{
-        indicator === 'chip'  ?  criteria = cartShoppingProduct.type === 'chip':
-        indicator === 'drink' ?  criteria = cartShoppingProduct.type === 'drink':
+        indicator === 'chip'  ?  criteria = cartShoppingProduct.type === indicator:
+        indicator === 'drink' ?  criteria = cartShoppingProduct.type === indicator:
                                  criteria = cartShoppingProduct.price > 0;
         if(criteria){
             counter += cartShoppingProduct.price;
         }
     });return console.log(`${indicator} : $ ${counter.toFixed(2)}`);
 }
-productSum('drink') //'all', 'chip', 'drink'
+productSum('chip') //'all', 'chip', 'drink'
