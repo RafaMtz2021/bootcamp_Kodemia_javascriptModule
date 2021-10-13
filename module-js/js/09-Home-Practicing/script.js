@@ -159,3 +159,32 @@ const createArrayScore = () =>{
     });return console.log(arrMentors);
 }
 createArrayScore();
+
+
+// const avgScoreBySignature2 = (signature) =>{
+//     const calif = [];
+//     const newFilter = mentorsArray.filter(mentor => mentor.scores.map(mat => { if(mat.signature === signature)calif.push(mat.score) }));
+//     const listFound = (calif.reduce((suma,score) => (Number(suma) + Number(score)),0))/calif.length;
+//     return console.log(`El promedio de ${signature} es ${listFound}`);
+// };
+// avgScoreBySignature2('ReactJS'); //'HTML', 'CSS', 'JS', 'ReactJS'
+
+
+const getCoverageBySignature2 = (mentors) => {
+    let signatures = {};
+
+    mentors.forEach((mentor) => {
+        mentor.scores.forEach((score) => {
+
+            if(score.signature in signatures) {
+                signatures[score.signature] += score.score / mentors.length;
+            } else {
+                signatures[score.signature] = score.score / mentors.length
+            }
+        })
+    });
+    console.log(signatures, 'signatures')
+}
+getCoverageBySignature2(mentorsArray);
+
+

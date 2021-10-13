@@ -163,10 +163,11 @@ const getScoreByName = mentorName => {
                 promedio = suma/(index + 1);
             });
             console.log(`Promedio individual de ${mentor.name} es de ${promedio}`);
-        };
+        }
+        suma = 0;
     });
   };
-  getScoreByName('Elvira Camarillo');
+  getScoreByName('Alejandra Paez');
 
 
 //-Obtener la lista de mentores cuyo promedio sea mayor a 9.5
