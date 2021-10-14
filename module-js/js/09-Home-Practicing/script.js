@@ -185,6 +185,6 @@ const getCoverageBySignature2 = (mentors) => {
     });
     console.log(signatures, 'signatures')
 }
-getCoverageBySignature2(mentorsArray);
+//getCoverageBySignature2(mentorsArray);
 
 
