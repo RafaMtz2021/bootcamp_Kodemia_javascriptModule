@@ -90,7 +90,7 @@ const singleBands = (bandArray) => {
         return acc;
     },[]);
 }
-console.log(singleBands(songsData));
+console.log(singleBands(songsData)+' Sol.1 ');
 
 //- Agrupar los nombres de la bandas, que no esten repetidas =======Solución 2
 const singleBands2 = (bandArray) => {
@@ -99,7 +99,7 @@ const singleBands2 = (bandArray) => {
     });
     return [...new Map(bands).values()];
 }
-  console.log(singleBands2(songsData));
+console.log(singleBands2(songsData)+' Sol.2 ');
 
   //- Agrupar los nombres de la bandas, que no esten repetidas =======Solución 3
 const nameBands = () => {
@@ -107,23 +107,11 @@ const nameBands = () => {
     const names = bands.filter((name, index) => bands.indexOf(name) === index);
     return names;
 }
-console.log(nameBands())
+console.log(nameBands()+' Sol.3 ')
+
 
 //- Agrupar las canciones por banda
 const songsByBand = (bandArray) => {
-    let playlist = {};
-    bandArray.map((band)=>{
-        if(band.band in playlist){
-            playlist[band.band] += band.name
-        }else{
-            playlist[band.band] = band.name
-        }
-    })
-    return console.log(playlist);
-}
-songsByBand(songsData);
-
-const songsByBand2 = (bandArray) => {
     let playlist = {};
     bandArray.map((band)=>{
         if(band.band in playlist){
@@ -134,30 +122,12 @@ const songsByBand2 = (bandArray) => {
     })
     return console.log(playlist);
 }
-songsByBand2(songsData);
-
+songsByBand(songsData);
 
 /*- La cancion con más reproducciones
 - La cancion con más likes
 */
-
 const mostReproductions = (bandArray)=>{
-    const arrayReproductions = bandArray.map(songs=>songs.statistics.reproductions);
-    const maxRepoductions = Math.max(...arrayReproductions);
-    const searchSongMostReproduced = bandArray.filter(songname => songname.statistics.reproductions === maxRepoductions)
-    const [{name}] = searchSongMostReproduced;
-    console.log(name);
-    const arrayLiked = bandArray.map(songs=>songs.statistics.likes);
-    let maxLiked = Math.max(...arrayLiked);
-    const searchSongMostLiked = bandArray.filter(songname => songname.statistics.likes === maxLiked)
-    const [{name2}] = searchSongMostLiked;
-    console.log(name2);
-    //console.log(`La canción más repro`);
-}
-//mostReproductions(songsData);
-
-const mostReproductions2 = (bandArray)=>{
-
     const getMostReproduced = () => {
         const arrayReproductions = bandArray.map(songs=>songs.statistics.reproductions);
         const maxReproductions = Math.max(...arrayReproductions);
@@ -165,7 +135,7 @@ const mostReproductions2 = (bandArray)=>{
         const [{name}] = searchSongMostReproduced;
         return {
             song: name, 
-            reproducciones: maxReproductions
+            reproductions: maxReproductions
         };
     }
     
@@ -182,4 +152,22 @@ const mostReproductions2 = (bandArray)=>{
 
     return console.log(getMostLiked(),getMostReproduced());
 }
-mostReproductions2(songsData);
+mostReproductions(songsData);
+
+
+/*- La cancion con más reproducciones
+- La cancion con más likes
+*/
+//Paramétrica
+const statisticsByType = (bandArray,type)=>{  
+    const arrayAmountByType = bandArray.map(songs=>songs.statistics[type]);
+    const maxNumber= Math.max(...arrayAmountByType);
+    const searchTopSong = bandArray.filter(songs=>songs.statistics[type] === maxNumber)
+    const [{name}] = searchTopSong;
+    return {
+        criteria: type,
+        song: name, 
+        quantity: maxNumber
+    };
+}
+console.log(statisticsByType(songsData,'reproductions')); //'likes','reproductions'
