@@ -84,8 +84,8 @@ const singleBands = (bandArray) => {
     const setObj = new Set();
     return bandArray.reduce((acc,cur)=>{
         if(!setObj.has(cur.band)){
-            setObj.add(cur.band) 
-            acc.push(cur.band)
+            setObj.add(cur.band); 
+            acc.push(cur.band);
         }
         return acc;
     },[]);
@@ -95,7 +95,7 @@ console.log(singleBands(songsData)+' Sol.1 ');
 //- Agrupar los nombres de la bandas, que no esten repetidas =======Solución 2
 const singleBands2 = (bandArray) => {
     const bands = bandArray.map(songs=> {
-      return [songs.band,songs.band]
+      return [songs.band,songs.band];
     });
     return [...new Map(bands).values()];
 }
@@ -115,9 +115,9 @@ const songsByBand = (bandArray) => {
     let playlist = {};
     bandArray.map((band)=>{
         if(band.band in playlist){
-            playlist[band.band] += `& ${band.name}  `
+            playlist[band.band] += `& ${band.name}  `;
         }else{
-            playlist[band.band] = `* ${band.name} `
+            playlist[band.band] = `* ${band.name} `;
         }
     })
     return console.log(playlist);
@@ -131,7 +131,7 @@ const mostReproductions = (bandArray)=>{
     const getMostReproduced = () => {
         const arrayReproductions = bandArray.map(songs=>songs.statistics.reproductions);
         const maxReproductions = Math.max(...arrayReproductions);
-        const searchSongMostReproduced = bandArray.filter(songname => songname.statistics.reproductions === maxReproductions)
+        const searchSongMostReproduced = bandArray.filter(songname => songname.statistics.reproductions === maxReproductions);
         const [{name}] = searchSongMostReproduced;
         return {
             song: name, 
@@ -142,7 +142,7 @@ const mostReproductions = (bandArray)=>{
     const getMostLiked = () =>{
         const arrayLiked = bandArray.map(songs=>songs.statistics.likes);
         let maxLiked = Math.max(...arrayLiked);
-        const searchSongMostLiked = bandArray.filter(songname => songname.statistics.likes === maxLiked)
+        const searchSongMostLiked = bandArray.filter(songname => songname.statistics.likes === maxLiked);
         const [{name}] = searchSongMostLiked;
         return {
             song: name,
@@ -160,9 +160,10 @@ mostReproductions(songsData);
 */
 //Paramétrica
 const statisticsByType = (bandArray,type)=>{  
-    const arrayAmountByType = bandArray.map(songs=>songs.statistics[type]);
+    const mapPredicate = songs=>songs.statistics[type];
+    const arrayAmountByType = bandArray.map(mapPredicate);
     const maxNumber= Math.max(...arrayAmountByType);
-    const searchTopSong = bandArray.filter(songs=>songs.statistics[type] === maxNumber)
+    const searchTopSong = bandArray.filter(songs=>songs.statistics[type] === maxNumber);
     const [{name}] = searchTopSong;
     return {
         criteria: type,
