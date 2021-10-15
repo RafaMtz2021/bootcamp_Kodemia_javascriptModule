@@ -238,8 +238,8 @@ const vaccinatedPeople = arrayPersons.filter(person => person.vaccinated === tru
 console.log(vaccinatedPeople);
 
 //- la edad promedio de todos los vacunados
-const avgAgeVaccinatedPeople = arrayPersons.reduce((acum,person)=>{
-    return acum+(person.age/arrayPersons.length)
+const avgAgeVaccinatedPeople = vaccinatedPeople.reduce((acum,person)=>{
+    return acum+(person.age/vaccinatedPeople.length)
 },0)
 console.log(avgAgeVaccinatedPeople.toFixed(2));
 
@@ -255,6 +255,8 @@ const avgAgeNotVaccinatedPeople = (people) =>{
 }
 console.log(avgAgeNotVaccinatedPeople(arrayPersons).toFixed(2));
 
+//- el porcentaje de vacunados vs no vacunados
+
 
 //   1-recoger dos dias de tareas
 //   2- convertur las duraciones de las tareas en horas, en lugar de minutos
@@ -265,7 +267,7 @@ console.log(avgAgeNotVaccinatedPeople(arrayPersons).toFixed(2));
 //   7-encadenar todos los metodos
 
 
-  const monday = [
+const monday = [
     {
         'name'     : 'Write a tutorial',
         'duration' : 180
@@ -283,10 +285,39 @@ const tuesday = [
     },
     {
         'name'     : 'Some more web development',
-        'duration' : 180
+        'duration' : 60
     },
     {
         'name'     : 'A whole lot of nothing',
-        'duration'  : 240
+        'duration'  : 242
     }
 ];
+
+//   1-recoger dos dias de tareas
+const taskArray = [...monday,...tuesday];
+console.log(taskArray);
+
+//2- convertur las duraciones de las tareas en horas, en lugar de minutos
+const covMinToHourArray = taskArray.map(task=>{
+    return{
+        name:task.name,
+        duration:task.duration/60
+    }
+});
+console.log(covMinToHourArray);
+
+//3-Filtarar todo lo que tomo dos horas o mas
+const taskMoreThan2Hours = covMinToHourArray.filter(task=>task.duration>=2);
+console.log(taskMoreThan2Hours);
+
+//4-Sumar todo
+const summation = covMinToHourArray.reduce((acc,time)=>acc+time.duration,0)
+console.log(summation);
+
+//5-Multiplica el resultado por una tarifa de hora para facturacion por dia
+const calculateRates = (rate) => summation * rate;
+console.log(calculateRates(25));
+
+//6- produce una cantidad formateada en dolares
+const formatToDollar = `$ ${Number(calculateRates(25).toFixed(2))} USD`
+console.log(formatToDollar);
