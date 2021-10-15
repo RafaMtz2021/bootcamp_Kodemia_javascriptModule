@@ -90,7 +90,7 @@ const singleBands = (bandArray) => {
         return acc;
     },[]);
 }
-console.log(singleBands(songsData)+' Sol.1 ');
+//console.log(singleBands(songsData)+' Sol.1 ');
 
 //- Agrupar los nombres de la bandas, que no esten repetidas =======Solución 2
 const singleBands2 = (bandArray) => {
@@ -99,7 +99,7 @@ const singleBands2 = (bandArray) => {
     });
     return [...new Map(bands).values()];
 }
-console.log(singleBands2(songsData)+' Sol.2 ');
+//console.log(singleBands2(songsData)+' Sol.2 ');
 
   //- Agrupar los nombres de la bandas, que no esten repetidas =======Solución 3
 const nameBands = () => {
@@ -107,7 +107,7 @@ const nameBands = () => {
     const names = bands.filter((name, index) => bands.indexOf(name) === index);
     return names;
 }
-console.log(nameBands()+' Sol.3 ')
+//console.log(nameBands()+' Sol.3 ')
 
 
 //- Agrupar las canciones por banda
@@ -122,7 +122,7 @@ const songsByBand = (bandArray) => {
     })
     return console.log(playlist);
 }
-songsByBand(songsData);
+//songsByBand(songsData);
 
 /*- La cancion con más reproducciones
 - La cancion con más likes
@@ -152,7 +152,7 @@ const mostReproductions = (bandArray)=>{
 
     return console.log(getMostLiked(),getMostReproduced());
 }
-mostReproductions(songsData);
+//mostReproductions(songsData);
 
 
 /*- La cancion con más reproducciones
@@ -171,4 +171,129 @@ const statisticsByType = (bandArray,type)=>{
         quantity: maxNumber
     };
 }
-console.log(statisticsByType(songsData,'reproductions')); //'likes','reproductions'
+//console.log(statisticsByType(songsData,'reproductions')); //'likes','reproductions'
+
+
+let arrayPersons = [
+    {
+        name: "Phibee", age: 25, vaccinated: true, gender: "mujer"
+    },
+    {
+        name: "Katrinka", age: 26, vaccinated: false, gender: "mujer"
+    },
+    {
+        name: "Bruno", age: 48, vaccinated: false, gender: "hombre"
+    },
+    {
+        name: "Jon", age: 22, vaccinated: true, gender: "hombre"
+    },
+    {
+        name: "Brian", age: 20, vaccinated: false, gender: "hombre"
+    },
+    {
+        name: "Eugene", age: 38, vaccinated: true, gender: "hombre"
+    },
+    {
+        name: "Big Bob", age: 29, vaccinated: true, gender: "hombre"
+    },
+    {
+        name: "Ximena", age: 40, vaccinated: false, gender: "mujer"
+    },
+    {
+        name: "Paulet", age: 37, vaccinated: false, gender: "mujer"
+    },
+    {
+        name: "Harold", age: 45, vaccinated: true, gender: "hombre"
+    },
+    {
+        name: "Gerald", age: 22, vaccinated: false, gender: "hombre"
+    },
+    {
+        name: "Arnold", age: 35, vaccinated: true, gender: "hombre"
+    },
+    {
+        name: "Gelga", age: 28, vaccinated: true, gender: "mujer"
+    },
+    {
+        name: "Lila", age: 18, vaccinated: true, gender: "mujer"
+    },
+    {
+        name: "Rhonda", age: 18, vaccinated: true, gender: "mujer"
+    },
+]
+
+/*
+Usar reduce para obtener la siguiente informacion
+- Un array con aquellas personas que se vacunaron
+- la edad promedio de todos los vacunados
+- un array con aquellas personas que se vacunaron y que son menores a 30 años
+- la edad promedio de los no vacunados
+- el porcentaje de vacunados vs no vacunados
+- el procentaje de mujeres que se vacunaron
+- el porcentaje de los hombres que vacunarion
+*/
+
+//- Un array con aquellas personas que se vacunaron
+const vaccinatedPeople = arrayPersons.filter(person => person.vaccinated === true)
+console.log(vaccinatedPeople);
+
+//- la edad promedio de todos los vacunados
+const avgAgeVaccinatedPeople = arrayPersons.reduce((acum,person)=>{
+    return acum+(person.age/arrayPersons.length)
+},0)
+console.log(avgAgeVaccinatedPeople.toFixed(2));
+
+//- un array con aquellas personas que se vacunaron y que son menores a 30 años
+const vaccinatedPeopleUnder30 = arrayPersons.filter(person=>person.vaccinated===true && person.age<30)
+console.log(vaccinatedPeopleUnder30);
+
+//- la edad promedio de los no vacunados
+const avgAgeNotVaccinatedPeople = (people) =>{
+    const personsFiltered = people.filter(person=>person.vaccinated === false)
+    const avg = personsFiltered.reduce((acum, person)=>acum+(person.age/personsFiltered.length),0)
+    return avg
+}
+console.log(avgAgeNotVaccinatedPeople(arrayPersons).toFixed(2));
+
+
+
+
+
+
+
+
+
+//   1-recoger dos dias de tareas
+//   2- convertur las duraciones de las tareas en horas, en lugar de minutos
+//   3-Filtarar todo lo que tomo dos horas o mas
+//   4-Sumar todo
+//   5-Multiplica el resultado por una tarifa de hora para facturacion por dia
+//   6- produce una cantidad formateada en dolares
+//   7-encadenar todos los metodos
+
+
+  const monday = [
+    {
+        'name'     : 'Write a tutorial',
+        'duration' : 180
+    },
+    {
+        'name'     : 'Some web development',
+        'duration' : 120
+    }
+];
+
+const tuesday = [
+    {
+        'name'     : 'Keep writing that tutorial',
+        'duration' : 240
+    },
+    {
+        'name'     : 'Some more web development',
+        'duration' : 180
+    },
+    {
+        'name'     : 'A whole lot of nothing',
+        'duration'  : 240
+    }
+];
