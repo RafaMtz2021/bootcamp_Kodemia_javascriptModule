@@ -233,7 +233,7 @@ Usar reduce para obtener la siguiente informacion
 - el porcentaje de los hombres que vacunarion
 */
 
-//- Un array con aquellas personas que se vacunaron
+//- Un array con aquellas personas que se vacunaron *** Al querer pasarlo a REDUCE no encuentro una forma más eficiente que con filter, ¿algún tip?
 const vaccinatedPeople = arrayPersons.filter(person => person.vaccinated === true)
 console.log(vaccinatedPeople);
 
@@ -243,24 +243,17 @@ const avgAgeVaccinatedPeople = arrayPersons.reduce((acum,person)=>{
 },0)
 console.log(avgAgeVaccinatedPeople.toFixed(2));
 
-//- un array con aquellas personas que se vacunaron y que son menores a 30 años
+//- un array con aquellas personas que se vacunaron y que son menores a 30 años   *** Al querer pasarlo a REDUCE no encuentro una forma más eficiente que con filter, ¿algún tip?
 const vaccinatedPeopleUnder30 = arrayPersons.filter(person=>person.vaccinated===true && person.age<30)
 console.log(vaccinatedPeopleUnder30);
 
-//- la edad promedio de los no vacunados
+//- la edad promedio de los no vacunados  *** Algún tip para hacerlo sólo con reduce y menos código??
 const avgAgeNotVaccinatedPeople = (people) =>{
     const personsFiltered = people.filter(person=>person.vaccinated === false)
     const avg = personsFiltered.reduce((acum, person)=>acum+(person.age/personsFiltered.length),0)
-    return avg
+    return avg;
 }
 console.log(avgAgeNotVaccinatedPeople(arrayPersons).toFixed(2));
-
-
-
-
-
-
-
 
 
 //   1-recoger dos dias de tareas
