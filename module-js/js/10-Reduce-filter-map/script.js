@@ -238,13 +238,13 @@ const vaccinatedPeople = arrayPersons.filter(person => person.vaccinated === tru
 console.log(vaccinatedPeople);
 
 //- la edad promedio de todos los vacunados
-const avgAgeVaccinatedPeople = vaccinatedPeople.reduce((acum,person)=>{
+const avgAgeVaccinatedPeople = [...vaccinatedPeople].reduce((acum,person)=>{
     return acum+(person.age/vaccinatedPeople.length)
 },0)
-console.log(avgAgeVaccinatedPeople.toFixed(2));
+console.log(avgAgeVaccinatedPeople.toFixed(2)+' years');
 
 //- un array con aquellas personas que se vacunaron y que son menores a 30 años   *** Al querer pasarlo a REDUCE no encuentro una forma más eficiente que con filter, ¿algún tip?
-const vaccinatedPeopleUnder30 = arrayPersons.filter(person=>person.vaccinated===true && person.age<30)
+const vaccinatedPeopleUnder30 = [...vaccinatedPeople].filter(person=>person.age<30)
 console.log(vaccinatedPeopleUnder30);
 
 //- la edad promedio de los no vacunados  *** Algún tip para hacerlo sólo con reduce y menos código??
@@ -253,9 +253,35 @@ const avgAgeNotVaccinatedPeople = (people) =>{
     const avg = personsFiltered.reduce((acum, person)=>acum+(person.age/personsFiltered.length),0)
     return avg;
 }
-console.log(avgAgeNotVaccinatedPeople(arrayPersons).toFixed(2));
+console.log(avgAgeNotVaccinatedPeople(arrayPersons).toFixed(2)+' years');
 
 //- el porcentaje de vacunados vs no vacunados
+vaccinatedVsNotVaccinated = (vaccinated,universe)=>{
+    percentageVaccinated = (vaccinated.length/universe.length)*100
+    percentageNotVaccinated = 100 - percentageVaccinated
+    return{
+        vaccinated: percentageVaccinated+' %',
+        notVaccinated: percentageNotVaccinated+' %'
+    }
+}
+console.log(vaccinatedVsNotVaccinated(vaccinatedPeople,arrayPersons));
+
+//- el procentaje de mujeres que se vacunaron
+const vaccinatedWomen = (vaccinated) =>{
+    const numWoman = vaccinated.filter(woman=>woman.gender==='mujer');
+    womenPercentage = ((numWoman.length/vaccinated.length)*100).toFixed(2)
+    return `women: ${womenPercentage} %`
+}
+console.log(vaccinatedWomen(vaccinatedPeople));
+
+//- el porcentaje de los hombres que vacunaron
+//- el procentaje de mujeres que se vacunaron
+const vaccinatedMen = (vaccinated) =>{
+    const numMen = vaccinated.filter(men=>men.gender==='hombre');
+    menPercentage = ((numMen.length/vaccinated.length)*100).toFixed(2)
+    return `men: ${menPercentage} %`
+}
+console.log(vaccinatedMen(vaccinatedPeople));
 
 
 //   1-recoger dos dias de tareas
