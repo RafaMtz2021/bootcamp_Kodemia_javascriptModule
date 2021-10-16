@@ -419,3 +419,6 @@ const productSum = (indicator) => {
     });return console.log(`${indicator} : $ ${counter.toFixed(2)}`);
 }
 productSum('chip') //'all', 'chip', 'drink'
+
+
+
