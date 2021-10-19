@@ -166,3 +166,15 @@ const filterByBootcamp = (koders) =>{
   };
 }
 console.log(filterByBootcamp(newKoders));
+
+//Agrupar con reduce
+filterByBootcamp2 = (orderedKoders) =>{
+  const result = orderedKoders.reduce((acum,item) => {
+    acum[item.bootcamp] = acum[item.bootcamp] || [];
+    acum[item.bootcamp].push(item);
+    return acum;
+  },Object.create(null));
+  return result;
+}
+console.log(filterByBootcamp2(newKoders));
+
