@@ -375,3 +375,48 @@ const formatToDollar = `$ ${Number(calculateRates(rate).toFixed(2))} USD`
 console.log(formatToDollar);
 }
 taskProcessing(1,30);
+
+
+
+//Agrupar con reduce
+filterByBootcamp2 = (orderedKoders) =>{
+    const result = orderedKoders.reduce((acum,item) => {
+      acum[item.bootcamp] = acum[item.bootcamp] || [];
+      acum[item.bootcamp].push(item);
+      return acum;
+    },{});
+    return result;
+  }
+  console.log(filterByBootcamp2(newKoders));
+  
+  
+  
+  const fruits = ['apples', 'apples', 'bananas', 'oranges', 'apples', 'oranges', 'bananas', 'grapes'];
+  
+  function countOccurrence(accumulator, currentFruit){
+      const currentFruitCount = accumulator[currentFruit];
+      // if the fruit exists as a key in the  object, increment its value, else add the fruit as a key to the object with a value of 1
+      if(currentFruitCount) {
+          accumulator[currentFruit] = currentFruitCount + 1;
+      } else {
+          accumulator[currentFruit] = 1
+      }
+      
+      return accumulator;
+  }
+  const initialValue = {};
+  const count = fruits.reduce(countOccurrence, initialValue);
+  console.log(count);
+
+
+
+  const some = (predicate, array) =>
+  array.reduce((acc, value) => acc || predicate(value), false);
+  
+  const equals3 = (x) => x === 3;
+
+  some(equals3, [3]); // true
+  some(equals3, [3, 3, 3]); // true
+  some(equals3, [1, 2, 3]); // true
+  some(equals3, [2]); // false
+  

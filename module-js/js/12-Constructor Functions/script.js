@@ -104,6 +104,27 @@ const koders = [
           score: 100
         }
       ]
+    },
+    {
+      name: "Constanza",
+      lastName: "Aremi",
+      birthday: "1996/06/24",
+      generation: 9,
+      bootcamp: "Golang",
+      scores: [
+        {
+          module: "Frontend",
+          score: 80
+        },
+        {
+          module: "Backend",
+          score: 90
+        },
+        {
+          module: "Cloud",
+          score: 100
+        }
+      ]
     }
   ];
   //console.log(koders)
@@ -167,14 +188,46 @@ const filterByBootcamp = (koders) =>{
 }
 console.log(filterByBootcamp(newKoders));
 
+// //Agrupar con reduce
+// filterByBootcamp2 = (orderedKoders) =>{
+//   const result = orderedKoders.reduce((acum,item) => {
+//     acum[item.bootcamp] = acum[item.bootcamp] || [];
+//     acum[item.bootcamp].push(item);
+//     return acum;
+//   },Object.create(null));
+//   return result;
+// }
+// console.log(filterByBootcamp2(newKoders));
+
 //Agrupar con reduce
 filterByBootcamp2 = (orderedKoders) =>{
   const result = orderedKoders.reduce((acum,item) => {
     acum[item.bootcamp] = acum[item.bootcamp] || [];
     acum[item.bootcamp].push(item);
     return acum;
-  },Object.create(null));
+  },{});
   return result;
 }
 console.log(filterByBootcamp2(newKoders));
 
+
+
+const fruits = ['apples', 'apples', 'bananas', 'oranges', 'apples', 'oranges', 'bananas', 'grapes'];
+
+function countOccurrence(accumulator, currentFruit){
+	const currentFruitCount = accumulator[currentFruit];
+    // if the fruit exists as a key in the  object, increment its value, else add the fruit as a key to the object with a value of 1
+    
+    if(currentFruitCount) {
+    	accumulator[currentFruit] = currentFruitCount + 1;
+    } else {
+    	accumulator[currentFruit] = 1
+    }
+    
+    return accumulator;
+}
+
+const initialValue = {};
+
+const count = fruits.reduce(countOccurrence, initialValue);
+console.log(count);

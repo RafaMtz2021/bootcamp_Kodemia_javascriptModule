@@ -1,4 +1,4 @@
-// Crear tabla con el sigueinte arreglo
+// Crear tabla con el siguiente arreglo
 
 const mentorsArray = [
     {
