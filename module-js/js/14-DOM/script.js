@@ -110,7 +110,7 @@ const mentorsArray = [
 
   //Función que recorre primero por mentor.name y luego por signature.scores
   const inspectMentor = () =>{
-      mentorsArray.forEach(mentor=>{
+      mentorsArray.forEach((mentor,index)=>{
           const trMentor = document.createElement('tr');
           const tdMentor = document.createElement('th');
           const nameMentor = document.createTextNode(mentor.name);
@@ -131,6 +131,14 @@ const mentorsArray = [
           const textAverage = document.createTextNode(averageByMentor);
           thAverage.appendChild(textAverage);
           trMentor.appendChild(thAverage);
+
+          //Crear botón de bootstrap
+          const btnMentor = document.createElement('button');
+          btnMentor.type='button'
+          btnMentor.className='btn btn-danger'
+          btnMentor.textContent = 'Delete'
+          btnMentor.id='B' + index
+          trMentor.appendChild(btnMentor);
           
           table.appendChild(trMentor);
       })
@@ -138,3 +146,28 @@ const mentorsArray = [
   inspectMentor();
   console.log(table);
   document.body.appendChild(table);
+
+
+  btn0 = document.querySelector("#B0")
+  btn0.addEventListener('click',()=>{
+      console.log('click en boton 0');
+      alert('¿Estás seguro de borrar el registro?')
+  })
+
+  btn1 = document.querySelector("#B1")
+  btn1.addEventListener('click',()=>{
+      console.log('click en boton 1');
+      alert('¿Estás seguro de borrar el registro?')
+  })
+
+  btn2 = document.querySelector("#B2")
+  btn2.addEventListener('click',()=>{
+      console.log('click en boton 2');
+      alert('¿Estás seguro de borrar el registro?')
+  })
+
+  btn3 = document.querySelector("#B3")
+  btn3.addEventListener('click',()=>{
+      console.log('click en boton 3');
+      alert('¿Estás seguro de borrar el registro?')
+  })
