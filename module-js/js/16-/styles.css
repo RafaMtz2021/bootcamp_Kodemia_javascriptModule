@@ -1,0 +1,23 @@
+table {
+  width: 70%;
+}
+
+td {
+  border-bottom: 1px solid #999;
+  width: 28%;
+  height: 40px;
+  text-align: center;
+}
+.scores {
+  text-align: left;
+}
+.text {
+  width: 30px;
+}
+.btn {
+  width: 150px;
+}
+
+.header {
+  text-align: left;
+}
