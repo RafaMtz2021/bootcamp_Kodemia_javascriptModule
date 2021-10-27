@@ -1,9 +1,11 @@
 //Seleccionar tabla de resultados.
-const table = document.querySelector('.list');
+const table = document.querySelector('.table');
 //Seleccionar botón que agrega mentor.
 const button = document.getElementById('saveMentor');
 //Seleccionar todos los inouts de calificación.
 const inputs = document.querySelectorAll('input')
+//Crear tbody
+const tBody = document.createElement('tbody');
 
 //Función que extrae los mentores con Object.values y los muestra en el DOM
 const renderUsers = (users) => {
@@ -11,8 +13,8 @@ const renderUsers = (users) => {
     newArray.forEach((mentor,index)=>{
         console.log(mentor.mentor);
         const row = document.createElement('tr');
-        row.className = 'mentorRow';
-        const name = document.createElement('td');
+        const name = document.createElement('th');
+        name.scope = 'row'
         const html = document.createElement('td');
         const css = document.createElement('td');
         const js = document.createElement('td');
@@ -34,7 +36,8 @@ const renderUsers = (users) => {
         row.appendChild(js);
         row.appendChild(react);
         //row.appendChild(removeButton);
-        table.appendChild(row);
+        tBody.appendChild(row)
+        table.appendChild(tBody);
 
 //      removeButton.addEventListener('click', (event) => {
 //      removeButton.closest('tr').remove();
@@ -103,11 +106,22 @@ const createMentor = () => {
     postUsers(mentor);
 };
 
+//Validación rústica para que no se vayan vacíos los campos.
+const validation = document.querySelector('.validation');
+const check1 = document.querySelector('.check1');
+const check2 = document.querySelector('.check2');
+const check3 = document.querySelector('.check3');
+const check4 = document.querySelector('.check4');
+
 //Listener que llama a la función para crear mentor en la DB y refresca la página.
 button.addEventListener('click', (e)=> {
-    createMentor();
-    location.reload();
-    //renderUsers();
+    if(validation.value && check1.value && check2.value && check3.value && check4.value){
+      createMentor();
+      location.reload();
+      alert('¡Registro exitoso!')
+    }else{
+      alert('Faltan Datos')
+    }
 });
 
 document.body.appendChild(table);
