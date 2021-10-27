@@ -101,9 +101,7 @@ const createMentor = () => {
 
 button.addEventListener('click', (e)=> {
     createMentor();
-    renderUsers();
-    console.log(mentorList);
-
+    //renderUsers();
 });
 
 document.body.appendChild(table);
