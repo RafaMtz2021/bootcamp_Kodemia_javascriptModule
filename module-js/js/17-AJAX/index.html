@@ -9,58 +9,76 @@
     <title>Document</title>
 </head>
 <body>
+    <div class= 'text-primary text-opacity-75 fs-1 d-flex justify-content-center mb-4 fw-bold'>CRUD de Mentores</div>
     <div class="container">
-        <form>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Nombre de Mentor</label>
-              <input name = 'name' type="text"  class="name">
-            </div>
-            <div class="mb-2">
-                <table class="">
-                    <tr>
-                        <td class="scores">
-                            <label class="form-label">Calificación HTML</label>
-                            <input name = 'html' type="text"  class="text">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="scores">
-                            <label class="form-label">Calificación CSS</label>
-                            <input name = 'css' type="text"  class="text">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="scores">
-                            <label class="form-label">Calificación JS</label>
-                            <input name = 'js' type="text"  class="text">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="scores">
-                            <label class="form-label">Calificación ReactJS</label>
-                            <input name = 'reactjs' type="text"  class="text">
-                        </td>
-                    </tr>
-                </table>
-            </div>
 
-            <button type="button" class="btn btn-primary" id="saveMentor">Agregar</button>
-            
-            <!-- <table class="header">
-                <tr class = >
-                    <th>MENTOR</th>
-                    <th>HTML</th>
-                    <th>CSS</th>
-                    <th>JS</th>
-                    <th>REACTJS</th>
-                </tr>
-            </table> -->
-
-            <table class="list">
-            </table>
-          </form>
+    <div class="row">
+        <div class="col mb-4">
+            <label for="exampleInputEmail1" class="form-label">Nombre de Mentor</label>
+            <input name = 'name' type="text"  class="name">
+        </div>
     </div>
 
+    <div class="row mb-4">
+        <div class="col">
+            <label class="form-label">Calificación HTML</label>
+            <input name = 'html' type="text"  class="text">
+        </div>
+        <div class="col">
+            <label class="form-label">Calificación CSS</label>
+            <input name = 'css' type="text"  class="text">
+        </div>
+        <div class="col">
+            <label class="form-label">Calificación JS</label>
+            <input name = 'js' type="text"  class="text">
+        </div>
+        <div class="col">
+            <label class="form-label">Calificación ReactJS</label>
+            <input name = 'reactjs' type="text"  class="text">
+        </div>
+        <div class="col">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col mb-4 d-flex justify-content-start">
+            <button type="button" class="btn btn-primary btn-lg" id="saveMentor">Agregar</button>
+        </div>
+        <div class="col">
+        </div>
+    </div>
+
+    <div class="container">
+
+    <div class="row fw-bold">
+        <div class="col">
+            MENTOR
+        </div>
+        <div class="col">
+            HTML
+        </div>
+        <div class="col">
+            CSS
+        </div>
+        <div class="col">
+            JS
+        </div>
+        <div class="col">
+            REACTJS
+        </div>
+    </div>
+        <table class="list">
+            <!-- <tr class = >
+                <th>MENTOR</th>
+                <th>HTML</th>
+                <th>CSS</th>
+                <th>JS</th>
+                <th>REACTJS</th>
+            </tr> -->
+        </table>
+    </div>
     <script src="./script.js"></script>
 </body>
 </html>

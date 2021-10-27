@@ -1,9 +1,12 @@
-const table = document.querySelector('.list')
+//Seleccionar tabla de resultados.
+const table = document.querySelector('.list');
+//Seleccionar botón que agrega mentor.
 const button = document.getElementById('saveMentor');
+//Seleccionar todos los inouts de calificación.
 const inputs = document.querySelectorAll('input')
 
+//Función que extrae los mentores con Object.values y los muestra en el DOM
 const renderUsers = (users) => {
-
     const newArray = Object.values(users);
     newArray.forEach((mentor,index)=>{
         console.log(mentor.mentor);
@@ -37,11 +40,12 @@ const renderUsers = (users) => {
 //      removeButton.closest('tr').remove();
 //      const personIndex = event.target.dataset.person;
 //      mentorList.splice(personIndex, 1);
-    })
+    });
  };
 
+//Función que obtiene los mentores de la DB mediante una petición GET.
 const getUsers = () => {
-    // instanciamos la clase
+    // instanciamos la clase XMLHttpRequest
   const xhr = new XMLHttpRequest();
 
   xhr.addEventListener("readystatechange", () => {
@@ -53,8 +57,9 @@ const getUsers = () => {
         const response = JSON.parse(xhr.responseText);
         renderUsers(response);
         
-      }else {
+      }else if(xhr.status>200) {
           console.log('Hubo un error')
+          console.log(xhr.status)
       }
     //console.log(xhr);
   });
@@ -67,6 +72,7 @@ const getUsers = () => {
 };
 getUsers();
 
+//Función que crea un mentor en la DB mediante una petición POST.
 const createMentor = () => {
     const mentor = {
         name:'',
@@ -85,11 +91,9 @@ const createMentor = () => {
         xhr.addEventListener("readystatechange", () => {
             console.log(xhr.readyState)
             if(xhr.readyState === 4 && xhr.status === 200) {
-              console.log(xhr)
+              console.log(xhr);
             }
-    
         });
-    
         const URL = "https://js-14va-default-rtdb.firebaseio.com/rafamtz/.json";
         console.log(xhr);
     
@@ -99,8 +103,10 @@ const createMentor = () => {
     postUsers(mentor);
 };
 
+//Listener que llama a la función para crear mentor en la DB y refresca la página.
 button.addEventListener('click', (e)=> {
     createMentor();
+    location.reload();
     //renderUsers();
 });
 
