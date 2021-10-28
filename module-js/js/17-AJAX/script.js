@@ -9,9 +9,10 @@ const tBody = document.createElement('tbody');
 
 //Función que extrae los mentores con Object.values y los muestra en el DOM
 const renderUsers = (users) => {
-    const newArray = Object.values(users);
-    newArray.forEach((mentor,index)=>{
-        console.log(mentor.mentor);
+    const newArray = Object.entries(users);
+    console.log(newArray);
+    newArray.forEach((mentor)=>{
+        console.log(mentor);
         const row = document.createElement('tr');
         const name = document.createElement('th');
         name.scope = 'row'
@@ -19,30 +20,31 @@ const renderUsers = (users) => {
         const css = document.createElement('td');
         const js = document.createElement('td');
         const react = document.createElement('td');
-        //const removeButton = document.createElement('button');
-        //removeButton.className = 'btn btn-primary'
-        //removeButton.setAttribute('data-person', index)
+        const removeButton = document.createElement('button');
+        removeButton.className = 'btn btn-primary'
+        removeButton.setAttribute('data-person', mentor[0])
 
-        name.textContent = mentor.mentor.name;
-        html.textContent = mentor.mentor.html;
-        css.textContent = mentor.mentor.css;
-        js.textContent = mentor.mentor.js;
-        react.textContent = mentor.mentor.reactjs;
+        name.textContent = mentor[1].mentor.name;
+        html.textContent = mentor[1].mentor.html;
+        css.textContent = mentor[1].mentor.css;
+        js.textContent = mentor[1].mentor.js;
+        react.textContent = mentor[1].mentor.reactjs;
 
-        //removeButton.textContent = 'Delete';
+        removeButton.textContent = 'Delete';
         row.appendChild(name);
         row.appendChild(html);
         row.appendChild(css);
         row.appendChild(js);
         row.appendChild(react);
-        //row.appendChild(removeButton);
+        row.appendChild(removeButton);
         tBody.appendChild(row)
         table.appendChild(tBody);
 
-//      removeButton.addEventListener('click', (event) => {
-//      removeButton.closest('tr').remove();
-//      const personIndex = event.target.dataset.person;
-//      mentorList.splice(personIndex, 1);
+        removeButton.addEventListener('click', (event) => {
+          removeButton.closest('tr').remove();
+          const personIndex = event.target.dataset.person;
+          deleteUsers(personIndex);
+        });
     });
  };
 
@@ -59,7 +61,7 @@ const getUsers = () => {
         console.log(xhr)
         const response = JSON.parse(xhr.responseText);
         renderUsers(response);
-        
+                
       }else if(xhr.status>200) {
           console.log('Hubo un error')
           console.log(xhr.status)
@@ -105,6 +107,21 @@ const createMentor = () => {
     };
     postUsers(mentor);
 };
+
+const deleteUsers = (userId) =>{
+  const xhr = new XMLHttpRequest();
+  const URL = `https://js-14va-default-rtdb.firebaseio.com/rafamtz/${userId}/.json`;
+  xhr.addEventListener("readystatechange", () => {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        console.log(xhr.responseText);
+        alert('El registro fue borrado exitosamente!')
+      }
+    }
+  });
+  xhr.open("DELETE", URL, true);
+  xhr.send();
+}
 
 //Validación rústica para que no se vayan vacíos los campos.
 const validation = document.querySelector('.validation');
