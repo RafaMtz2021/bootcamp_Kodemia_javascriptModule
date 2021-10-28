@@ -21,7 +21,8 @@ const renderUsers = (users) => {
         const js = document.createElement('td');
         const react = document.createElement('td');
         const removeButton = document.createElement('button');
-        removeButton.className = 'btn btn-primary'
+        removeButton.className = 'btn btn-primary';
+        removeButton.type = 'button';
         removeButton.setAttribute('data-person', mentor[0])
 
         name.textContent = mentor[1].mentor.name;
