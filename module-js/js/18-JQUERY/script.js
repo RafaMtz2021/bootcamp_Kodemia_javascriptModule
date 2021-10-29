@@ -13,6 +13,7 @@ $(document).ready( () => {
         square.id = id++;
         square.textContent = text;
         $('#draw').append(square);
+        $('#text').val('');
     };
     //Detecta cualquier cambio en el DOM y pinta el Post It
     $('#draw').bind('DOMSubtreeModified', () => {
