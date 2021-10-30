@@ -17,19 +17,28 @@ $(document).ready( () => {
     };
     //Detecta cualquier cambio en el DOM y pinta el Post It
     $('#draw').bind('DOMSubtreeModified', () => {
-        //console.log('changed');
+        console.log('changed');
         const item = $('.postIt')
         $(item).click( (e) => {
             const id = e.target.id
-            //console.log(id);
+            console.log(id);
             $(item).removeClass('colorize');
             $('#'+id).addClass('colorize');
+        });
+        //Elimina Post It con click derecho
+        $(item).mousedown( (e) =>{
+            if(e.which === 3){
+                const id = e.target.id
+                $('#'+id).remove();
+            }
         });
       });
     //Agrega texto y crea Post It 
     $('#addItem').click( () => { 
         addText();
     });
+
+
 });
 
 
